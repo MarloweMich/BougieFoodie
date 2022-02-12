@@ -53,24 +53,31 @@ $('#local-list').on('click', 'li button', function()
 
 function callSearch()
 {
-  var searchFieldVal = $("#search-field").val();
+   var searchFieldVal = $("#search-field").val();
 
-  var url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=how+to+make+${searchFieldVal}&key=${APIKEY}`;
+  // var url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&q=how+to+make+${searchFieldVal}&key=${APIKEY}`;
 
-  fetch(url)
-  .then(function (response) 
-  {
-    return response.json();
-  })
-  .then(function(data) 
-  {
+  // fetch(url)
+  // .then(function (response) 
+  // {
+  //   return response.json();
+  // })
+  // .then(function(data) 
+  // {
 
-    console.log(data);
-    var videoID = data.items[0].id.videoId;
+  //   console.log(data);
+  //   var videoID = data.items[0].id.videoId;
 
-    $("#video").attr('src',`https://www.youtube.com/embed/${videoID}`);
 
-  });
+  //   $("#video").attr('src',`https://www.youtube.com/embed/${videoID}`);
+
+  //   $("#suggest1").attr('src', data.items[1].snippet.thumbnails.default.url)
+  //   $("#suggest2").attr('src', data.items[2].snippet.thumbnails.default.url)
+  //   $("#suggest3").attr('src', data.items[3].snippet.thumbnails.default.url)
+
+  // });
+$('#suggest1').attr('alt', 'withinfunction')
+  
 
   var wikiFrame = $('#wikiframe');
   var url = `https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&list=search&srsearch=${searchFieldVal}`;
@@ -107,3 +114,18 @@ function addItemToList(fieldValue)
   localStorage.setItem('history', JSON.stringify(localStore));
 }
 
+var suggest1 = $('#suggest1');
+  suggest1.on('click', function(){
+    console.log("TESTING1");
+    // $('#video').attr('src', 'https://www.youtube.com/embed/' + data.items[1].id.videoId')
+  })
+  var suggest2 = $('#suggest2');
+  suggest2.on('click', function(){
+    console.log("TESTING2")
+    // $('#video').attr('src', 'https://www.youtube.com/embed/' + data.items[2].id.videoId')
+  })
+  var suggest3 = $('#suggest3');
+  suggest3.on('click', function(){
+    console.log("TESTING3")
+    // $('#video').attr('src', 'https://www.youtube.com/embed/' + data.items[3].id.videoId')
+  })
